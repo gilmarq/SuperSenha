@@ -149,6 +149,14 @@
                     <navigationItem key="navigationItem" title="Gerador de senhas " id="OSe-AE-Jyc">
                         <barButtonItem key="backBarButtonItem" title="Gerador de senhas " id="2lg-c2-O1W"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="seNumber" destination="A13-Hw-1Aw" id="lf3-09-CsC"/>
+                        <outlet property="swCapitalLetters" destination="Hfn-Qa-oGc" id="ISC-kR-AI0"/>
+                        <outlet property="swLetters" destination="ICU-60-cmS" id="kY0-yC-K45"/>
+                        <outlet property="swSpecialcharacters" destination="a8c-BA-RzR" id="nc8-5G-gIn"/>
+                        <outlet property="tfNunberOfCharacters" destination="aGd-dJ-Xa1" id="Vd8-jg-bj0"/>
+                        <outlet property="tftotalPassword" destination="jjB-Os-MdX" id="5H8-bN-zrR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,7 +165,7 @@
         <!--Lista de Senha-->
         <scene sceneID="Vxb-GN-rxl">
             <objects>
-                <viewController id="esp-SS-fR8" sceneMemberID="viewController">
+                <viewController id="esp-SS-fR8" customClass="PasswordsViewController" customModule="SuperSenha" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fOY-9U-p6P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,12 +188,15 @@
                                 <state key="normal" title="Gerar Novamente ">
                                     <color key="titleColor" red="0.59607843140000005" green="0.20392156859999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="generate:" destination="esp-SS-fR8" eventType="touchUpInside" id="Nhr-HC-o2H"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="000000" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eXh-RT-0we">
                                 <rect key="frame" x="16" y="138" width="343" height="401"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="0.59607843140000005" green="0.20392156859999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -204,15 +215,18 @@
                         <viewLayoutGuide key="safeArea" id="s8i-xd-RFz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lista de Senha" id="7LG-oi-GLv"/>
+                    <connections>
+                        <outlet property="tvPasswords" destination="eXh-RT-0we" id="hPP-1V-VG9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJ3-Mp-oCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1338.4000000000001" y="484.40779610194909"/>
         </scene>
-        <!--View Controller-->
+        <!--Security Tips View Controller-->
         <scene sceneID="zcn-Hv-uFY">
             <objects>
-                <viewController id="czT-oa-N8e" sceneMemberID="viewController">
+                <viewController id="czT-oa-N8e" customClass="SecurityTipsViewController" customModule="SuperSenha" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="do8-I9-ule">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,44 +242,191 @@
                                 <state key="normal" title="Fechar">
                                     <color key="titleColor" red="0.59607843140000005" green="0.20392156859999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="close:" destination="czT-oa-N8e" eventType="touchUpInside" id="95a-vH-xBG"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDf-iT-Sme">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dDf-iT-Sme">
                                 <rect key="frame" x="16" y="87" width="343" height="522"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
+                                    <fragment content="1. Escolha senhas fáceis de lembrar ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
                                     <fragment>
-                                        <string key="content">1. Escolha senhas fáceis de lembrar 
+                                        <string key="content">
 Uma senha fácil de guardar na memória evita que o usuário tenha que anotá-la em papeis ou arquivos, que podem chegar às mãos de pessoas erradas.
 
-2. Não use palavras reais 
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="2. Não use palavras reais ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Uma palavra que pode ser encontrada no dicionário pode facilitar o trabalho de hackers. Para tornar esse trabalho mais difícil, use frases ao invés de substantivos.
 
-98
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="3.  Combine maiúsculas, minúsculas, números e caracteres não alfanuméricos">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 A inserção desses itens na senha complica ainda mais o trabalho de quem estiver mal intencionado.
 
-4.  Não recicle senhas
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="4.  Não recicle senhas">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Por exemplo, não use "senha1 ‘, ' senha2 ‘, ' senha3 ' em contas diferentes. Ao mudar apenas um caractere, o usuário corre o risco de entregar o acesso a outros serviços ao cibercriminoso
 
-5. Não use a mesma senha para várias contas
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="5. Não use a mesma senha para várias contas">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 O mesmo se aplica nesse caso. Caso o pior aconteça, o usuário perde a segurança de todas as suas contas.
-
-6.   Não use senhas óbvias que podem ser facilmente descobertas
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+6.   Não use senhas óbvias que podem ser facilmente descobertas</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Não escolha como código o nome de pessoas da família, como filho, marido ou até do animal de estimação. Ao investigar levemente a vida de alguém, esses nomes são facilmente descobertos e podem se tornar uma arma.
 
-7.  Não compartilhe sua senha
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="7.  Não compartilhe sua senha">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Nunca compartilhe suas informações pessoais. Se alguma empresa pedir sua senha, mesmo que por telefone, não informe. Lembre-se, você não sabe quem está do outro lado da linha telefônica.
 
-8.  Se algum site enviar um e-mail de confirmação com uma nova senha, inicie uma nova sessão na página e altere sua senha imediatamente
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">8.  Se algum site enviar um e-mail de confirmação com uma nova senha, inicie uma nova sessão na página e altere sua senha imediatamente</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Esse procedimento evita possíveis fraudes. Ao abrir links suspeitos, o usuário pode acabar fornecendo informações pessoais sem perceber.
 
-9.     Certifique-se de que seu software de segurança da Internet bloqueie as intenções dos cibercriminosos de interceptar ou roubar senhas
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">9.     Certifique-se de que seu software de segurança da Internet bloqueie as intenções dos cibercriminosos de interceptar ou roubar senhas</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Muitos ataques podem ser evitados ao ativar serviços básicos de proteção na internet dos antivírus.
 
-10.  Se você achar que é difícil lembrar-se de várias senhas complexas, considere a instalação de um gerenciadores de senhas 
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="10.  Se você achar que é difícil lembrar-se de várias senhas ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.59607843137254901" green="0.20392156862745098" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">complexas, considere a instalação de um gerenciadores de senhas 
 Há diversos programas disponíveis que armazenam os dados de maneira segura e ajudam os mais esquecidos.</string>
                                         <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" size="14" name=".AppleSystemUIFont"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -279,7 +440,11 @@ Há diversos programas disponíveis que armazenam os dados de maneira segura e a
                             <constraint firstItem="WTv-q6-stR" firstAttribute="top" secondItem="dnn-XG-VRx" secondAttribute="top" constant="12" id="94n-ok-WLD"/>
                             <constraint firstItem="dnn-XG-VRx" firstAttribute="bottom" secondItem="FXi-nu-KVS" secondAttribute="bottom" constant="20" id="FlP-SH-8aZ"/>
                             <constraint firstItem="dnn-XG-VRx" firstAttribute="trailing" secondItem="FXi-nu-KVS" secondAttribute="trailing" constant="24" id="O3T-TD-gca"/>
+                            <constraint firstItem="FXi-nu-KVS" firstAttribute="top" secondItem="dDf-iT-Sme" secondAttribute="bottom" constant="8" id="Ptn-bM-bsN"/>
                             <constraint firstItem="WTv-q6-stR" firstAttribute="centerX" secondItem="do8-I9-ule" secondAttribute="centerX" id="U1w-0o-hwx"/>
+                            <constraint firstItem="dDf-iT-Sme" firstAttribute="top" secondItem="WTv-q6-stR" secondAttribute="bottom" constant="33" id="aIM-Qo-9el"/>
+                            <constraint firstItem="dnn-XG-VRx" firstAttribute="trailing" secondItem="dDf-iT-Sme" secondAttribute="trailing" constant="16" id="b45-d4-Ja9"/>
+                            <constraint firstItem="dDf-iT-Sme" firstAttribute="leading" secondItem="dnn-XG-VRx" secondAttribute="leading" constant="16" id="gG5-rF-f3b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dnn-XG-VRx"/>
                     </view>
@@ -296,6 +461,7 @@ Há diversos programas disponíveis que armazenam os dados de maneira segura e a
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="AP6-EN-BfO">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.59607843140000005" green="0.20392156859999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
